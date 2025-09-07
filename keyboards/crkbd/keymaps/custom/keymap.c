@@ -68,11 +68,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   )
 };
-#define DRIVER_LED_TOTAL 54 
+#define DRIVER_LED_TOTAL 54
+uint8_t flag=0;
 bool rgb_matrix_indicators_user(void) {
-    for (uint8_t i = 0; i < DRIVER_LED_TOTAL; i++) {
-        rgb_matrix_set_color(i, 0, 0, 255); // Blue
+    if(flag==0){
+
+        for (uint8_t i = 0; i < DRIVER_LED_TOTAL; i++) {
+            rgb_matrix_set_color(i, 69, 39, 160); // Blue
+        }
+        rgb_matrix_set_color(13, 229, 57, 53); // Set mo1 0 to red
+        rgb_matrix_set_color(40, 79, 195, 247); // Set mo2 0 to green
+        flag=1;
     }
-    rgb_matrix_set_color(0, 255, 0, 0); // Set LED 0 to red
-    return true;
+    return false;
 }
