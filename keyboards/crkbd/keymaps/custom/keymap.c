@@ -68,6 +68,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   )
 };
-void keyboard_post_init_user(void) {
-    rgb_matrix_mode(RGB_MATRIX_CUSTOM_my_cool_effect);
+#define DRIVER_LED_TOTAL 54 
+bool rgb_matrix_indicators_user(void) {
+    for (uint8_t i = 0; i < DRIVER_LED_TOTAL; i++) {
+        rgb_matrix_set_color(i, 0, 0, 255); // Blue
+    }
+    rgb_matrix_set_color(0, 255, 0, 0); // Set LED 0 to red
+    return true;
 }
